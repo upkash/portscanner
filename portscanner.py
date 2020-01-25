@@ -33,10 +33,14 @@ def scanPorts(host, start, end):
 def Main():
 	if len(sys.argv) != 4:
 		usage()
-		return;
+		exit()
+	if int(sys.argv[2] > sys.argv[3]):
+		print("Start port higher than end port, exiting")
+		exit()
 	host_ip = socket.gethostbyname(sys.argv[1])
 	out = scanPorts(host_ip, int(sys.argv[2]), int(sys.argv[3]))
 	print(out)
+	exit()
 
 if __name__ == '__main__':
 	Main()
